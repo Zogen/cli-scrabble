@@ -79,3 +79,13 @@ The statistics menu shows:
 This project is released under the MIT License. 
 See the [LICENSE](LICENSE) file for details.
 
+---
+
+## Disclaimer
+
+This project is an educational showcase developed as part of a university assignment.  
+It is a simplified, unofficial word game inspired by **Scrabble®**, but it is **not affiliated with, endorsed by, or associated with Hasbro, Mattel, or any official Scrabble® brand**.
+
+The project is intended for **non-commercial use only**.
+
+
