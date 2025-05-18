@@ -69,5 +69,6 @@ The statistics menu shows:
 
 ## License
 
-===
+This project is licensed under the **Creative Commons Attribution-NonCommercial 4.0 International** license.  
+See the [LICENSE](LICENSE) file for details.
 
