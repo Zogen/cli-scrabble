@@ -3,6 +3,8 @@ import io
 import os
 import itertools
 import json
+from colorama import Fore, Style, init
+init(autoreset=True)
 
 
 values = {'Α': 1, 'Β': 8, 'Γ': 4, 'Δ': 4, 'Ε': 1,
@@ -180,46 +182,50 @@ class Game:
         cpu_tempHand = self.cpu.hand
 
         while len(self.cpu.hand) >= 2 and len(self.p1.hand) >= 2:
-            print('===========================================')
-            print('===========================================')
-            print(self.rounds+1, '\bος Γύρος\n')
+            print('\n╔══════════════════════════════════════════╗')
+            print(f'║           ΓΥΡΟΣ {self.rounds + 1}                        ║')
+            print('╠══════════════════════════════════════════╣')
+            print(f'║ {Fore.GREEN}Παίκτης: {self.p1.score} πόντοι{Style.RESET_ALL}' + ' ' * (25 - len(str(self.p1.score))) + '║')
+            print(f'║ {Fore.RED}CPU: {self.cpu.score} πόντοι{Style.RESET_ALL}' + ' ' * (29 - len(str(self.cpu.score))) + '║')
+            print('╚══════════════════════════════════════════╝')
 
             optWord = self.cpu.play(p1_tempHand)
             playerAction = self.p1.play()
+
             if playerAction == 'p':
                 self.sak.putBackLetters(self.p1.hand)
-            if playerAction == 'q':
+            elif playerAction == 'q':
                 break
 
-            print('Βέλτιστη λέξη: ' + optWord)
-
-            print(self.p1.hand)
-            print(self.p1)
+            print(Fore.YELLOW + f'📣 Βέλτιστη λέξη CPU για το χέρι σου: {optWord}')
 
             self.cpu.hand = cpu_tempHand
             cpuAction = self.cpu.play(self.cpu.hand)
+
             if cpuAction == '':
                 self.sak.putBackLetters(self.cpu.hand)
 
-            print(self.cpu)
+            print(Fore.GREEN + f'{self.p1}')
+            print(Fore.RED + f'{self.cpu}')
 
             if len(self.p1.hand) < 7:
                 self.p1.gatherLetters(self.sak)
             self.cpu.gatherLetters(self.sak)
-            print(self.sak)
-            print(self.p1.hand)
-            print(self.cpu.hand)
+
+            print(Fore.CYAN + f'{self.sak}')
+            print(Fore.GREEN + 'Χέρι Παίκτη:', self.p1.hand)
+            print(Fore.RED + 'Χέρι Υπολογιστή:', self.cpu.hand)
 
             self.rounds += 1
 
-        print('============ΤΕΛΟΣ ΠΑΙΧΝΙΔΙΟΥ===============')
-        print('Παίχτηκαν', self.rounds, 'γύροι.')
+        print(Fore.MAGENTA + '\n============ ΤΕΛΟΣ ΠΑΙΧΝΙΔΙΟΥ ============')
+        print(f'Παίχτηκαν {self.rounds} γύροι.')
         if self.cpu.score > self.p1.score or playerAction == 'q':
             self.winner = self.cpu
         else:
             self.winner = self.p1
+        print(f'🎉 Νικητής: {self.winner}')
 
-        print('ΣΥΓΧΑΡΗΤΗΡΙΑ, ΝΙΚΗΣΕ Ο', self.winner)
 
     def end(self):
         result = {"games": []}
