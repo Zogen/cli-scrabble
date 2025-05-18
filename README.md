@@ -69,6 +69,6 @@ The statistics menu shows:
 
 ## License
 
-This project is licensed under the **Creative Commons Attribution-NonCommercial 4.0 International** license.  
+This project is released under the MIT License. 
 See the [LICENSE](LICENSE) file for details.
 
