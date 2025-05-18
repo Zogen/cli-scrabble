@@ -49,7 +49,14 @@ The statistics menu shows:
 
 ## Screenshot
 
-*(Add game screenshots here )*
+### Main Menu & Statistics
+![Main Menu & Stats](screenshots/main_menu_stats.png)
+
+### Gameplay
+![Gameplay](screenshots/gameplay.png)
+
+### Game Over
+![Game Over](screenshots/game_over.png)
 
 ---
 
